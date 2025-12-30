@@ -67,3 +67,7 @@ python object_tracker.py
 - 65 unique tracks, 1,974 detections
 - Longest track: 493 frames (19.7s)
 - Average confidence: 60.4%
+
+## OUTPUT File:-
+
+- https://drive.google.com/file/d/1qILQA6BshnDbQjwKJN075-i-quw-5Yeq/view?usp=sharing
