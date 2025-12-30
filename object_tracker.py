@@ -141,22 +141,12 @@ class VehicleTracker:
        height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
-       codecs = ['avc1', 'H264', 'X264', 'mp4v']
-       out = None
-      
-       for codec in codecs:
-           try:
-               fourcc = cv2.VideoWriter_fourcc(*codec)
-               test_out = cv2.VideoWriter(output_video_path, fourcc, fps, (width, height))
-               if test_out.isOpened():
-                   out = test_out
-                   break
-               test_out.release()
-           except:
-               continue
-      
-       if out is None:
-           raise RuntimeError("Codec not present")
+       codec = 'avc1'
+       fourcc = cv2.VideoWriter_fourcc(*codec)
+       out = cv2.VideoWriter(output_video_path, fourcc, fps, (width, height))
+       if not out.isOpened():
+            raise RuntimeError("Codec not present")
+                   
       
        # Initialize CSV writer
        csv_file = open(output_csv_path, 'w', newline='')
@@ -231,6 +221,7 @@ class VehicleTracker:
            cv2.destroyAllWindows()
       
        print(f"\nProcessing complete!")
+
 
 def main():
   
